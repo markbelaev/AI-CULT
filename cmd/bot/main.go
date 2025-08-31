@@ -30,6 +30,7 @@ func main() {
 	}
 
 	handlers.RegisterAll(bot)
+	slog.Info("All handlers registered")
 
 	slog.Info("Bot started")
 	bot.Start()
