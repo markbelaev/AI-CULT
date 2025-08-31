@@ -13,7 +13,7 @@ type Config struct {
 
 func Load() *Config {
 	if err := godotenv.Load(".env"); err != nil {
-		slog.Error("Error loading .env file", "err", err)
+		slog.Error("Error loading .env file", "error", err)
 		os.Exit(1)
 	}
 
