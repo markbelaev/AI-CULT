@@ -8,7 +8,6 @@ import (
 
 func RegisterAll(b *telebot.Bot) {
 	registerCommands(b)
-
 	slog.Info("All handlers registered")
 }
 

@@ -14,6 +14,7 @@ func main() {
 	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, nil)))
 
 	cfg := config.Load()
+	slog.Info("Config successfully loaded")
 
 	pref := telebot.Settings{
 		Token: cfg.TokenBot,
