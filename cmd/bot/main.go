@@ -3,6 +3,7 @@ package main
 import (
 	"AI-CULT/internal/config"
 	"AI-CULT/internal/handlers"
+	"AI-CULT/internal/server"
 	"log/slog"
 	"os"
 	"time"
@@ -15,6 +16,15 @@ func main() {
 
 	cfg := config.Load()
 	slog.Info("Config successfully loaded")
+
+	s := server.New()
+
+	go func() {
+		if err := s.Start(); err != nil {
+			slog.Error("Failed to start s", "error", err)
+			os.Exit(1)
+		}
+	}()
 
 	pref := telebot.Settings{
 		Token: cfg.TokenBot,
