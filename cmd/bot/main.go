@@ -17,11 +17,11 @@ func main() {
 	cfg := config.Load()
 	slog.Info("Config successfully loaded")
 
-	s := server.New()
+	server := server.New()
 
 	go func() {
-		if err := s.Start(); err != nil {
-			slog.Error("Failed to start s", "error", err)
+		if err := server.Start(); err != nil {
+			slog.Error("Failed to start server", "error", err)
 			os.Exit(1)
 		}
 	}()
