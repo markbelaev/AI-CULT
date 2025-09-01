@@ -9,6 +9,7 @@ import (
 
 type Config struct {
 	TokenBot string
+	APIKey   string
 }
 
 func Load() *Config {
@@ -23,7 +24,14 @@ func Load() *Config {
 		os.Exit(1)
 	}
 
+	apiKey := os.Getenv("API_KEY")
+	if apiKey == "" {
+		slog.Error("API_KEY environment variable not set")
+		os.Exit(1)
+	}
+
 	return &Config{
 		TokenBot: tokenBot,
+		APIKey:   apiKey,
 	}
 }
