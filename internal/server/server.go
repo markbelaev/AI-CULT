@@ -1,8 +1,8 @@
 package server
 
 import (
+	"AI-CULT/internal/server/routes"
 	"log/slog"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -18,21 +18,9 @@ func New() *Server {
 		router: router,
 	}
 
-	server.setupRoutes()
+	routes.SetupRoutes(router)
 
 	return server
-}
-
-func (s *Server) setupRoutes() {
-	s.router.GET("/health", s.healthHandler)
-}
-
-func (s *Server) healthHandler(c *gin.Context) {
-	c.Request.Context()
-
-	c.JSON(http.StatusOK, gin.H{
-		"status": "ok",
-	})
 }
 
 func (s *Server) Start() error {
