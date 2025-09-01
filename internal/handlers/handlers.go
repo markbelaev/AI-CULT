@@ -10,4 +10,5 @@ func RegisterAll(b *telebot.Bot) {
 
 func registerCommands(b *telebot.Bot) {
 	b.Handle("/start", handleStart)
+	b.Handle("/about", handleAbout)
 }
